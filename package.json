@@ -1,0 +1,11 @@
+{
+  "name": "arya",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Arya — browser-based AI assistant. Pure HTML/CSS/JS app; this package.json is dev-only (used to run unit tests with Node's built-in test runner). Not required to run the app itself.",
+  "scripts": {
+    "test": "node --test tests/unit/",
+    "serve": "node -e \"console.log('Open index.html directly in Chrome, or run: npx serve .')\""
+  }
+}

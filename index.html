@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Arya — AI Assistant (Phase 1: Foundation)</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>Arya</h1>
+    <p id="status-line" class="status-line">Booting…</p>
+  </header>
+
+  <main class="app-main">
+    <section class="panel chat-panel">
+      <h2>Chat (shell only — Phase 2 adds the real AI brain)</h2>
+      <div id="chat-log" class="chat-log" aria-live="polite"></div>
+      <form id="chat-form" class="chat-form">
+        <input id="chat-input" type="text" placeholder="Type a message…" autocomplete="off" />
+        <button type="submit">Send</button>
+      </form>
+      <div class="voice-controls" aria-label="Voice controls">
+        <button id="voice-start-btn" type="button">Start listening</button>
+        <button id="voice-stop-btn" type="button">Stop listening</button>
+        <button id="voice-cancel-btn" type="button">Stop speaking</button>
+        <span id="voice-state" class="voice-state">Voice ready.</span>
+      </div>
+    </section>
+
+    <section class="panel settings-panel">
+      <h2>Settings</h2>
+      <form id="settings-form">
+        <label for="lang-select">Language</label>
+        <select id="lang-select">
+          <option value="hinglish">Hinglish (default)</option>
+          <option value="en">English</option>
+          <option value="hi">Hindi</option>
+        </select>
+
+        <label for="log-select">Log level</label>
+        <select id="log-select">
+          <option value="DEBUG">DEBUG</option>
+          <option value="INFO">INFO</option>
+          <option value="WARN">WARN</option>
+          <option value="ERROR">ERROR</option>
+        </select>
+
+        <label class="checkbox-label">
+          <input id="wake-toggle" type="checkbox" />
+          Enable wake word (foreground-only, see limitations below)
+        </label>
+
+        <hr class="settings-divider" />
+        <p class="hint">
+          AI provider — no API key is ever stored here. "Local demo" is fully
+          offline and free. "Backend proxy" calls a URL you control; your own
+          server (not this page) holds any real provider's key.
+        </p>
+        <label for="ai-provider-select">AI provider</label>
+        <select id="ai-provider-select">
+          <option value="mock">Local demo (offline, no AI, free)</option>
+          <option value="proxy">Backend proxy (advanced — you supply the URL)</option>
+        </select>
+
+        <label for="ai-proxy-url">Backend proxy URL</label>
+        <input id="ai-proxy-url" type="url" placeholder="https://your-own-backend.example.com/chat" autocomplete="off" />
+
+        <button type="submit">Save settings</button>
+      </form>
+    </section>
+
+    <section class="panel capability-panel">
+      <h2>Browser capability report</h2>
+      <p class="hint">Arya only claims to support what this browser actually supports. Anything marked N/A includes an explanation.</p>
+      <div id="capability-report" class="capability-report"></div>
+    </section>
+
+    <section class="panel memory-panel">
+      <h2>Long-term memory</h2>
+      <p id="memory-persistence-note" class="hint"></p>
+      <p class="hint">
+        Say "remember that …" (or "yaad rakho …") in chat, or add one below.
+        Arya never stores API keys, passwords, or auth tokens — see
+        docs/ARCHITECTURE.md.
+      </p>
+      <form id="memory-add-form" class="memory-add-form">
+        <input id="memory-add-input" type="text" placeholder="Add a memory…" autocomplete="off" />
+        <button type="submit">Add</button>
+      </form>
+      <div id="memory-list" class="memory-list"></div>
+      <button id="memory-clear-btn" type="button" class="memory-clear-btn">Clear all memories</button>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>Phase 1 — Foundation. See <code>docs/STATE.md</code> for build status.</p>
+  </footer>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>

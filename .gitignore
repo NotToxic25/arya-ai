@@ -1,0 +1,13 @@
+# Dependencies (only used for dev-time unit testing; app itself needs no install)
+node_modules/
+
+# Local-only config, in case a future phase adds a file-based override
+config.local.js
+config.local.json
+.env
+.env.local
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*.log
